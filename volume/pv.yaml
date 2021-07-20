@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+   name: nfs-10g
+   namespace: wordpress-stack
+spec:
+   accessModes:
+     - ReadWriteMany
+   capacity:
+     storage: 10Gi
+   persistentVolumeReclaimPolicy: Recycle
+   volumeMode: Filesystem
+   nfs:
+     server: 172.16.20.195
+     path: /nfs/10g
+     readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+   name: nfs-2g
+   namespace: wordpress-stack
+spec:
+   accessModes:
+     - ReadWriteMany
+   capacity:
+     storage: 2Gi
+   persistentVolumeReclaimPolicy: Retain
+   volumeMode: Filesystem
+   nfs:
+     server: 172.16.20.195
+     path: /nfs/2g
+     readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+   name: nfs-5g
+   namespace: wordpress-stack
+spec:
+   accessModes:
+     - ReadWriteMany
+   capacity:
+     storage: 5Gi
+   persistentVolumeReclaimPolicy: Retain
+   volumeMode: Filesystem
+   nfs:
+     server: 172.16.20.195
+     path: /nfs/5g
+     readOnly: false

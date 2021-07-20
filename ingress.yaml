@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dwsclass.io
+  namespace: wordpress-stack
+  annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+#      nginx.ingress.kubernetes.io/externalTrafficPolicy: Local
+      nginx.ingress.kubernetes.io/enable-cors: "true"
+      nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+      nginx.ingress.kubernetes.io/cors-allow-headers: "X-Forwarded-For, X-app123-XPTO"
+spec:
+  rules:
+   - host: "admin.dwsclass.io"
+     http:
+      paths:
+       - path: /phpmyadmin(/|$)(.*)
+         pathType: Prefix
+         backend:
+            service:
+              name: phpmyadmin
+              port:
+                number: 8080
+   - host: "dwsclass.io"
+     http:
+       paths:
+        - path: /blog(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service:
+               name: wordpress
+               port:
+                 number: 80
+   - host: admin.dwsclass.io
+     http:
+       paths:
+        - path: /filebrowser(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service:
+               name: filebrowser
+               port:
+                 number: 80
+   - host: mail.dwsclass.io
+     http:
+       paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+               name: postio
+               port:
+                 number: 80
+               port:
+                 number: 443

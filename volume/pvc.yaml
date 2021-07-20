@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+   name: mydata
+   namespace: wordpress-stack
+spec:
+   accessModes:
+     - ReadWriteMany
+   volumeMode: Filesystem
+   resources:
+     requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+   name: mysqlstorage
+   namespace: wordpress-stack
+spec:
+   accessModes:
+     - ReadWriteMany
+   volumeMode: Filesystem
+   resources:
+     requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+   name: postiostorage
+   namespace: wordpress-stack
+spec:
+   accessModes:
+     - ReadWriteMany
+   volumeMode: Filesystem
+   resources:
+     requests:
+      storage: 5Gi
+---

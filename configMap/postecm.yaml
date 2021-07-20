@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+        name: postiocm
+        namespace: wordpress-stack
+        labels:
+                apps.k8s.io/name: postiocm
+                apps.k8s.io/type: config
+                apps.k8s.io/part-of: postiocm
+data:
+        username: dws
+

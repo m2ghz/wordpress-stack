@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+        name: mscm
+        namespace: wordpress-stack
+        labels:
+                apps.k8s.io/name: mscm
+                apps.k8s.io/type: config
+                apps.k8s.io/part-of: mscm
+data:
+        MYSQL_DATABASE: wpdb
+        MYSQL_USER: dws 
+
+

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebrowser.json
+  namespace: wordpress-stack
+data:
+  .filebrowser.json: |
+   {
+     "port": 80,
+      "baseURL": "/filebrowser",
+      "address": "",
+      "log": "stdout",
+      "database": "/database.db",
+      "root": "/srv"
+    }
+
